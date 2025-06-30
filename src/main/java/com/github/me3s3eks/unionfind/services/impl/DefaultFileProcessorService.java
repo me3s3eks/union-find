@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class DefaultFileProcessorService implements FileProcessorService {
 
     private static final Pattern VALID_LINE_PATTERN =
-        Pattern.compile("^(?=.*[^\\s\"]+.*)(?:\"[^\\s\"]*\"(?:;\"[^\\s\"]*\")*)+$");
+        Pattern.compile("^(?=.*[^\\s\";]+.*)(?:(\"[^\\s\";]*\")?(?:;(\"[^\\s\";]*\"|[;]))*)+$");
 
     @Override
     public List<String> process(Path filePath) {
@@ -49,7 +49,7 @@ public class DefaultFileProcessorService implements FileProcessorService {
                 }
             };
             return fileReaderSupplier;
-        } else if (FileUtils.isTextFile(filePath)) {
+        } else if (FileUtils.isTextFile(filePath) || FileUtils.isCsvFile(filePath)) {
             fileReaderSupplier = () -> {
                 try {
                     return FileUtils.getReaderForText(filePath);
