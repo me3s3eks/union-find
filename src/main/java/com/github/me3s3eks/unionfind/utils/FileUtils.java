@@ -21,6 +21,8 @@ public class FileUtils {
 
     private static final String TEXT_FILE_EXTENSION = ".txt";
 
+    private static final String CSV_FILE_EXTENSION = ".csv";
+
     public static Path validatePath(String pathStr) {
         if (pathStr == null) {
             throw new IllegalArgumentException("Path to file must not be null");
@@ -56,6 +58,10 @@ public class FileUtils {
 
     public static boolean isTextFile(Path filePath) {
         return filePath.getFileName().toString().toLowerCase().endsWith(TEXT_FILE_EXTENSION);
+    }
+
+    public static boolean isCsvFile(Path filePath) {
+        return filePath.getFileName().toString().toLowerCase().endsWith(CSV_FILE_EXTENSION);
     }
 
     public static BufferedReader getReaderForGzip(Path filePath) throws IOException {
