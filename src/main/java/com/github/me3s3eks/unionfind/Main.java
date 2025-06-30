@@ -55,8 +55,6 @@ public class Main {
         int numberGroupsWithMoreThanOneElement = GroupsUtils.countGroupsWithMoreThanOneElement(groups);
         ConsoleWriter.writeSuccess("Number of groups with more than one element: " +
             numberGroupsWithMoreThanOneElement);
-        ConsoleWriter.writeSuccess("Total number of groups: " + groups.size());
-        ConsoleWriter.writeSuccess("Total number of unique valid lines in input file: " + lines.size());
 
         Path outputFilePath = intputFilePath.getParent().resolve(OUTPUT_FILE_NAME);
         ConsoleWriter.writeInfo("Start writing groups to file: " + outputFilePath);
